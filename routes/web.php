@@ -24,3 +24,13 @@ Route::get('/', function () {
 http://webhost/%E5%8F%96%E5%BE%97%E8%AB%8B%E6%B1%82?input_value=123
 */
 Route::get('取得請求/{route_input_value}', 'RequestController@getRequest');
+
+/*
+|--------------------------------------------------------------------------
+| 請求路徑與方法
+|--------------------------------------------------------------------------
+可取得跟驗證 route, url, method(get post)
+*/
+
+Route::get('getRequestPathUrlMethod
+', 'RequestController@getRequestPathUrlMethod');
