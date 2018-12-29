@@ -16,7 +16,13 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        /**
+         * TrimStrings 主動將request的字串清除前後空白
+         */
         \App\Http\Middleware\TrimStrings::class,
+        /**
+         * ConvertEmptyStringsToNull 主動將request的空字串轉為null
+         */
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
     ];
