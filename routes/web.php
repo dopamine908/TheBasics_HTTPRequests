@@ -31,6 +31,14 @@ Route::get('取得請求/{route_input_value}', 'RequestController@getRequest');
 |--------------------------------------------------------------------------
 可取得跟驗證 route, url, method(get post)
 */
-
 Route::get('getRequestPathUrlMethod
 ', 'RequestController@getRequestPathUrlMethod');
+
+/*
+|--------------------------------------------------------------------------
+| 取request輸入值的方法
+|--------------------------------------------------------------------------
+瀏覽
+http://127.0.0.1:8000/getInput?input_value=123&input_arr[]=1&input_arr[]=2&empty_input_value=
+*/
+Route::get('getInput', 'RequestController@getInput');
