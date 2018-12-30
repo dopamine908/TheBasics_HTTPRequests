@@ -50,3 +50,11 @@ Route::get('getInput', 'RequestController@getInput');
 */
 Route::get('舊輸入', 'RequestController@viewOldInput');
 Route::post('舊輸入', 'RequestController@oldInput');
+
+/*
+|--------------------------------------------------------------------------
+| 上傳檔案request用法
+|--------------------------------------------------------------------------
+*/
+Route::get('上傳檔案', 'RequestController@viewUplodFile');
+Route::post('上傳檔案', 'RequestController@uplodFile');

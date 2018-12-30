@@ -131,4 +131,41 @@ class RequestController extends Controller
              */
         }
     }
+
+    public function viewUplodFile() {
+        return view('upload_file');
+    }
+
+    /**
+     * 上傳檔案request用法
+     *
+     * @param Request $request
+     */
+    public function uplodFile(Request $request) {
+        //取得檔案
+        dump($request->file('upload_file'));
+        dump($request->upload_file);
+
+        //取得檔案資訊
+        dump('檔案路徑 ＝ '.$request->file('upload_file')->path());
+        dump('檔案路徑 ＝ '.$request->upload_file->path());
+        dump('副檔名 ＝ '.$request->file('upload_file')->extension());
+        dump('副檔名 ＝ '.$request->upload_file->extension());
+
+        //檢驗檔案是否上取得成功
+        if($request->hasFile('upload_file')) {
+            dump('檔案存在');
+        }
+        if($request->file('upload_file')->isValid()) {
+            dump('檔案存在且有效');
+
+            //儲存上傳檔案
+//            $request->upload_file->storage('file_store_path');
+//            $request->photo->store('file_store_path', 's3');
+
+            //儲存上傳檔案(另外取名稱)
+//            $request->upload_file->storageAs('file_store_path');
+//            $request->upload_file->storeAs('file_store_path', 'filename.jpg', 's3');
+        }
+    }
 }
