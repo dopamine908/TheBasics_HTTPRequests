@@ -42,3 +42,11 @@ Route::get('getRequestPathUrlMethod
 http://127.0.0.1:8000/getInput?input_value=123&input_arr[]=1&input_arr[]=2&empty_input_value=
 */
 Route::get('getInput', 'RequestController@getInput');
+
+/*
+|--------------------------------------------------------------------------
+| 取得及使用舊的輸入值
+|--------------------------------------------------------------------------
+*/
+Route::get('舊輸入', 'RequestController@viewOldInput');
+Route::post('舊輸入', 'RequestController@oldInput');

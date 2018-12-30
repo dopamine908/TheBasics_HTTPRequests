@@ -85,4 +85,50 @@ class RequestController extends Controller
         dump($request->filled('input_value'));
         dump($request->filled('empty_input_value'));
     }
+
+    /**
+     * 導向old_request頁面
+     * 如果有舊的輸入值會顯示
+     * 
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function viewOldInput(Request $request) {
+        //取得之前輸入過的值
+        dump($request->old('even'));
+        dump($request->old('odd'));
+        return view('old_request');
+    }
+
+    /**
+     * 將舊的輸入值存到seesion
+     * 若不符合規則
+     * 則將輸入值一起帶到要redirect的頁面供使用
+     *
+     * @param Request $request
+     * @return $this
+     */
+    public function oldInput(Request $request) {
+        //將input存到seesion中
+        $request->flash();
+        /**
+         * 如果想要只存某個值或是不存某個其他都存
+         * $request->flashOnly(['aaaaaa', 'bbbbbb']);
+         * $request->flashExcept('ccccc');
+         */
+
+        dump($request->session());
+
+        if($request->input('even') % 2 == 1 || $request->input('odd') % 2 == 0) {
+            //將舊的input一起帶到新的頁面使用old()呼叫
+            return redirect('舊輸入')->withInput();
+            /**
+             * 如果想要只存某個值或是不存某個其他都存
+             *
+             * return redirect('form')->withInput(
+             *       $request->except('password')
+             *   );
+             */
+        }
+    }
 }
